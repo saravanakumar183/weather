@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather Forecast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 250px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .weather-info {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .weather-info h2 {
+            margin-top: 0;
+        }
+        .weather-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+    <form action="/weather" method="get">
+        <label for="city">Enter City:</label>
+        <input type="text" id="city" name="city" placeholder="e.g., London" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    <div th:if="${city}" class="weather-info">
+        <h2>Weather in <span th:text="${city}"></span></h2>
+        <p>Temperature: <span th:text="${temperature}"></span>°C</p>
+        <p>Description: <span th:text="${description}"></span></p>
+    </div>
+</body>
+</html>
